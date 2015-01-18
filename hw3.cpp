@@ -23,9 +23,41 @@ int main(){
     do_heapify(nodes, nodecount);
     debug(nodes, nodecount);
 
-    // while(1){
-        
-    // }
+    int c;
+    int quit=1;
+    while(quit){
+        cout << "Next? (1)Insert (2)Remove (3)Quit >> ";
+        cin >> c;
+        switch(c){
+            case 1:
+                
+                int tmp;
+                cout << "      (1)Insert >> ";
+                cin >> tmp;
+                nodecount++;
+                nodes[nodecount] = tmp;
+                do_heapify(nodes, nodecount);
+                debug(nodes, nodecount);
+                break;
+
+            case 2:
+                if (nodecount==0){
+                    cout << "      (2)Remove :no more nodes.\n";
+                }else{
+                    for (int i = 1; i < nodecount; ++i){
+                        nodes[i]=nodes[i+1];
+                    }
+                    nodecount--;
+                    do_heapify(nodes, nodecount);
+                    debug(nodes, nodecount);
+                }
+                break;
+
+            case 3:
+                quit=0;
+                break;
+        }
+    }
     return 0;
 }
 
